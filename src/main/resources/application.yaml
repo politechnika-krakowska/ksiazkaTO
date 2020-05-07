@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: cookbook
+  datasource:
+    name: cookbookDS
+    url: "jdbc:postgresql://localhost:5432/cookbook"
+    username: "cookbook"
+    password: "cookbook"
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+
+server:
+  port : 8066
+
+
+---
+
+spring:
+  profiles: inmemory
+  datasource:
+    name: cookbookDS
+    url: "jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1"
+    username:
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: "create"
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.H2Dialect"
